@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import FormGenerator from "./components/FormGenerator/FormGenerator";
+import FormMake from "./components/FormMake/FormMake";
+import FormView from "./components/FormView/FormView";
+import Home from "./components/Home/Home";
+import Navigation from "./components/Navigation/Navigation";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="">
+			<Router>
+				<Navigation />
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/home" element={<Home />} />
+					<Route path="/generate-form" element={<FormGenerator />} />
+					<Route path="/form-make/:formId" element={<FormMake />} />
+					<Route path="/form-view/:formId" element={<FormView />} />
+				</Routes>
+			</Router>
+		</div>
+	);
 }
 
 export default App;
